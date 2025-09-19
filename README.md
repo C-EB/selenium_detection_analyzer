@@ -26,14 +26,14 @@ Before starting any web scraping project, the crucial question is: **"Do I need 
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/selenium-detector.git
-cd selenium-detector
+git clone https://github.com/C-EB/selenium_detection_analyzer.git
+cd selenium_detection_analyzer
 
 # Install dependencies
 pip install -r requirements.txt
 
 # Run the analyzer
-python selenium_detector.py
+python selenium_test.py
 ```
 
 ### Basic Usage
@@ -68,8 +68,8 @@ webdriver-manager>=3.8.0
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/yourusername/selenium-detector.git
-   cd selenium-detector
+   git clone https://github.com/C-EB/selenium_detection_analyzer.git
+   cd selenium_detection_analyzer
    ```
 
 2. **Create virtual environment (recommended):**
@@ -85,7 +85,7 @@ webdriver-manager>=3.8.0
 
 4. **Run the tool:**
    ```bash
-   python selenium_detector.py
+   python selenium_test.py
    ```
 
 ## 📖 Usage Guide
