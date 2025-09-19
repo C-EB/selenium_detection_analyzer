@@ -2,7 +2,7 @@
 
 [![Python Version](https://img.shields.io/badge/python-3.7%2B-blue.svg)](https://python.org)
 [![Code Style: Black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
-[![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/yourusername/selenium-detector/graphs/commit-activity)
+[![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/C-EB/selenium_detection_analyzer/graphs/commit-activity)
 
 > **Intelligent web scraping strategy analyzer** that determines whether a website requires Selenium WebDriver or if simple HTTP requests are sufficient for data extraction.
 
@@ -526,7 +526,7 @@ We welcome contributions! Here's how you can help:
 
 ```bash
 # Fork the repository and clone your fork
-git clone https://github.com/yourusername/selenium-detector.git
+git clone https://github.com/C-EB/selenium_detection_analyzer.git
 cd selenium-detector
 
 # Create development environment
@@ -573,10 +573,6 @@ black --check selenium_detector.py
 4. Format code with Black
 5. Submit a pull request
 
-## 📝 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
 ## 🙏 Acknowledgments
 
 - **Selenium WebDriver** - For automated browser testing capabilities
@@ -586,9 +582,9 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 📞 Support
 
-- **Issues**: [GitHub Issues](https://github.com/yourusername/selenium-detector/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/yourusername/selenium-detector/discussions)
-- **Documentation**: [Wiki](https://github.com/yourusername/selenium-detector/wiki)
+- **Issues**: [GitHub Issues](https://github.com/C-EB/selenium_detection_analyzer/issues)
+- **Discussions**: [GitHub Discussions](https://github.com/C-EB/selenium_detection_analyzer/discussions)
+- **Documentation**: [Wiki](https://github.com/C-EB/selenium_detection_analyzer/wiki)
 
 ## 🔄 Changelog
 
