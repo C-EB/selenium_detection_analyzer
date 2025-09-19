@@ -88,86 +88,245 @@ webdriver-manager>=3.8.0
    python selenium_test.py
    ```
 
-## 📖 Usage Guide
+## 📖 How To Use Each Feature
 
-### Interactive Mode
+### 🚀 Method 1: Single Website Analysis
 
-Run the script and choose from four analysis modes:
-
+**Step 1:** Run the script
 ```bash
 python selenium_detector.py
 ```
 
-**Available Options:**
-1. **Single Website Analysis** - Analyze one URL with detailed breakdown
-2. **Multiple Websites** - Enter URLs manually for batch analysis
-3. **Batch from File** - Load URLs from a text file
-4. **Quick Test** - Test with sample URLs to verify functionality
+**Step 2:** Choose option `1` from the menu
+```
+🔹 SELENIUM DETECTION ANALYZER
+==================================================
+Choose analysis mode:
+1. Single website        ← Choose this
+2. Multiple websites (manual input)
+3. Batch from file
+4. Quick test with sample URLs
 
-### Programmatic Usage
-
-#### Single Website Analysis
-
-```python
-from selenium_detector import analyze_website
-
-# Basic analysis
-result = analyze_website("https://stackoverflow.com")
-
-print(f"URL: {result['url']}")
-print(f"Needs Selenium: {result['needs_selenium']}")
-print(f"Confidence: {result['confidence']:.1f}%")
-print(f"Frameworks: {result['frameworks_detected']}")
-print(f"Reasons: {result['reasons']}")
+Enter your choice (1-4): 1
 ```
 
-#### Batch Processing
-
-```python
-from selenium_detector import batch_analyze_websites
-
-# Analyze multiple URLs
-urls = [
-    "https://en.wikipedia.org/wiki/Python",
-    "https://react.dev",
-    "https://docs.python.org",
-    "https://angular.io"
-]
-
-results = batch_analyze_websites(
-    urls, 
-    output_file="analysis_results.json",
-    max_workers=5
-)
-
-# Process results
-selenium_needed = [r for r in results if r['needs_selenium']]
-print(f"Websites requiring Selenium: {len(selenium_needed)}")
+**Step 3:** Enter the website URL
+```
+Enter website URL: stackoverflow.com
 ```
 
-#### File-Based Batch Analysis
+**What happens:**
+- The script analyzes the website
+- Shows detailed results with confidence score
+- Tells you if you need Selenium or not
 
-```python
-# Create urls.txt file with URLs (one per line)
-results = batch_analyze_websites(
-    "urls.txt",
-    output_file="results.csv",
-    max_workers=3
-)
+**Example Output:**
+```
+🔹 SELENIUM DETECTION ANALYSIS
+=======================================
+URL: https://stackoverflow.com
+Needs Selenium: ❌ NO
+Confidence: 87.2%
+
+📊 Content Metrics:
+  • Requests content length: 156,789 chars
+  • Selenium content length: 162,345 chars
+
+💡 Reasons:
+  • Static HTML provides sufficient content
 ```
 
-### Command Line Arguments
+---
 
+### 🚀 Method 2: Multiple Websites (Manual Input)
+
+**Step 1:** Run the script and choose option `2`
 ```bash
-# Analyze single URL
-python selenium_detector.py --url "https://example.com"
-
-# Batch analysis from file
-python selenium_detector.py --batch urls.txt --output results.json --workers 5
-
-# Quick test mode
-python selenium_detector.py --test
+python selenium_detector.py
+# Choose option 2
 ```
+
+**Step 2:** Enter URLs one by one
+```
+Enter URLs (one per line, press Enter twice to finish):
+wikipedia.org
+react.dev
+docs.python.org
+stackoverflow.com
+                    ← Press Enter twice here to finish
+```
+
+**Step 3:** Choose if you want to save results
+```
+Save results to file? (y/n): y
+Enter filename (e.g., results.json or results.csv): my_analysis.json
+```
+
+**What happens:**
+- Analyzes all URLs in parallel (faster)
+- Shows progress for each website
+- Saves results to file if requested
+- Shows summary at the end
+
+**Example Output:**
+```
+🚀 Starting batch analysis of 4 websites...
+🔧 Using 3 parallel workers
+================================================================================
+[  1/4] ❌ NO  |  87% | https://wikipedia.org
+[  2/4] ✅ YES |  92% | https://react.dev
+[  3/4] ❌ NO  |  85% | https://docs.python.org
+[  4/4] ❌ NO  |  89% | https://stackoverflow.com
+================================================================================
+📊 BATCH ANALYSIS SUMMARY
+================================================================================
+Total websites analyzed: 4
+✅ Need Selenium: 1 (25.0%)
+❌ Static sufficient: 3 (75.0%)
+📈 Average confidence: 88.3%
+```
+
+---
+
+### 🚀 Method 3: Batch from File (Best for Many URLs)
+
+**Step 1:** Create a text file with your URLs
+
+Create a file called `websites.txt`:
+```txt
+https://en.wikipedia.org/wiki/Python
+https://react.dev
+https://angular.io
+https://docs.python.org
+https://stackoverflow.com
+https://www.bbc.com/news
+https://github.com
+https://medium.com
+https://dev.to
+https://hackernews.com
+```
+
+**Step 2:** Run the script and choose option `3`
+```bash
+python selenium_detector.py
+# Choose option 3
+```
+
+**Step 3:** Provide the file path and settings
+```
+Enter path to file containing URLs: websites.txt
+Number of parallel workers (default 3): 5    ← More workers = faster
+Save results to (optional, e.g., results.json): final_results.csv
+```
+
+**What happens:**
+- Reads all URLs from your file
+- Uses 5 parallel workers (faster processing)
+- Saves results to CSV file
+- Shows detailed progress and summary
+
+**Example Output:**
+```
+🚀 Starting batch analysis of 10 websites...
+🔧 Using 5 parallel workers
+================================================================================
+[  1/10] ❌ NO  |  87% | https://en.wikipedia.org/wiki/Python
+[  2/10] ✅ YES |  94% | https://react.dev
+[  3/10] ✅ YES |  91% | https://angular.io
+[  4/10] ❌ NO  |  85% | https://docs.python.org
+[  5/10] ❌ NO  |  89% | https://stackoverflow.com
+[  6/10] ❌ NO  |  82% | https://www.bbc.com/news
+[  7/10] ❌ NO  |  76% | https://github.com
+[  8/10] ❌ NO  |  79% | https://medium.com
+[  9/10] ❌ NO  |  84% | https://dev.to
+[ 10/10] ❌ NO  |  88% | https://hackernews.com
+
+💾 Results saved to: final_results.csv
+```
+
+---
+
+### 🚀 Method 4: Quick Test (Try It Out)
+
+**Step 1:** Run the script and choose option `4`
+```bash
+python selenium_detector.py
+# Choose option 4
+```
+
+**What happens:**
+- Tests the script with 5 sample websites
+- No input needed from you
+- Shows how the tool works
+- Perfect for first-time users
+
+**Example websites tested:**
+- Wikipedia (should be NO)
+- Python docs (should be NO) 
+- BBC News (should be NO)
+- Example.com (should be NO)
+- Some might need Selenium
+
+---
+
+### 📁 File Formats Explained
+
+#### Input File Format (for Method 3)
+Your `urls.txt` file should look like this:
+```txt
+https://example1.com
+example2.com
+www.example3.com
+https://www.example4.com/some-page
+```
+**Rules:**
+- One URL per line
+- http:// or https:// is optional (added automatically)
+- www. is optional
+- Can include specific pages/paths
+
+#### Output JSON Format
+```json
+[
+  {
+    "url": "https://stackoverflow.com",
+    "needs_selenium": false,
+    "confidence": 87.2,
+    "frameworks_detected": [],
+    "reasons": ["Static HTML provides sufficient content"],
+    "requests_len": 156789,
+    "selenium_len": 162345,
+    "processed_at": "2024-03-15T10:30:45"
+  }
+]
+```
+
+#### Output CSV Format
+Opens in Excel/Google Sheets:
+| URL | Needs Selenium | Confidence | Frameworks | Reasons |
+|-----|----------------|------------|------------|---------|
+| stackoverflow.com | FALSE | 87.2 |  | Static HTML sufficient |
+| react.dev | TRUE | 94.1 | React, Next.js | JavaScript frameworks detected |
+
+---
+
+### ⚡ Performance Tips
+
+**For analyzing many websites faster:**
+
+1. **Increase workers** (Method 2 & 3):
+   ```
+   Number of parallel workers: 10    ← Instead of default 3
+   ```
+
+2. **Use file method** for 10+ websites (Method 3 is fastest)
+
+3. **Save to JSON** for detailed analysis, **CSV for spreadsheets**
+
+**Worker recommendations:**
+- **1-10 websites:** Use 3 workers
+- **10-50 websites:** Use 5-7 workers  
+- **50+ websites:** Use 8-10 workers (don't go higher, may cause issues)
 
 ## 📊 Output Formats
 
