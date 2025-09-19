@@ -1,7 +1,6 @@
 # 🕸️ Selenium Detection Analyzer
 
 [![Python Version](https://img.shields.io/badge/python-3.7%2B-blue.svg)](https://python.org)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Code Style: Black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/yourusername/selenium-detector/graphs/commit-activity)
 
